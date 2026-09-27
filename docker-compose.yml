@@ -1,0 +1,11 @@
+services:
+  cachenova:
+    build: .
+    ports:
+      - "6380:6380"   # RESP — connect with: redis-cli -p 6380
+      - "8080:8080"   # dashboard — http://localhost:8080
+    volumes:
+      - cache-data:/data   # AOF survives restarts
+
+volumes:
+  cache-data:
